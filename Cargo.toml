@@ -1,6 +1,6 @@
 [package]
 name = "tauri-plugin-glazier"
-version = "0.1.0"
+version = "0.0.1"
 description = "Window tiling for Tauri Apps with unified cross-platform functionality"
 authors = ["Andre Roelofs"]
 license = "Apache-2.0"

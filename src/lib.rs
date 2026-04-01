@@ -3,7 +3,7 @@ use std::sync::Mutex;
 use focus_tracker::FocusedWindow;
 use tauri::{
     plugin::{Builder, TauriPlugin},
-    Emitter, Error, Listener, Runtime, WebviewWindow,
+    Emitter, Error, Listener, Manager, Runtime, WebviewWindow,
 };
 
 #[cfg(target_os = "macos")]
