@@ -18,6 +18,7 @@ tauri-plugin = { version = "2", features = ["build"] }
 [dependencies]
 tauri = { version = "2", default-features = false }
 serde = { version = "1", features = ["derive"] }
+focus-tracker = "1"
 serde_json = "1"
 thiserror = "2"
 log = "0.4"

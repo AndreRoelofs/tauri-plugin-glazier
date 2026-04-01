@@ -1,11 +1,25 @@
 use tauri::{
     plugin::{Builder, TauriPlugin},
-    Runtime,
+    Emitter, Error, Listener, Runtime, WebviewWindow,
 };
 
-mod error;
+#[cfg(target_os = "macos")]
+#[path = "macos/mod.rs"]
+mod platform;
 
-pub use error::{Error, Result};
+#[cfg(target_os = "linux")]
+#[path = "linux/mod.rs"]
+mod platform;
+
+#[cfg(target_os = "windows")]
+#[path = "windows/mod.rs"]
+mod platform;
+
+mod commands;
+
+pub trait WebviewWindowExt {
+    fn create_overlay_titlebar(&self) -> Result<&Self, Error>;
+}
 
 pub fn init<R: Runtime>() -> TauriPlugin<R> {
     Builder::new("glazier")
