@@ -1,6 +1,4 @@
 use std::sync::Mutex;
-
-use focus_tracker::FocusedWindow;
 use tauri::{
     plugin::{Builder, TauriPlugin},
     Emitter, Error, Listener, Manager, Runtime, WebviewWindow,
@@ -19,6 +17,8 @@ mod platform;
 mod platform;
 
 mod commands;
+
+pub struct FocusedWindow {}
 
 pub struct GlazierState {
     pub items: Mutex<Vec<FocusedWindow>>,
