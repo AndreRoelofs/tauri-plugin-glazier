@@ -9,8 +9,8 @@ pub async fn position_window_next_to_previous(
     platform::commands::position_window_next_to_previous(state).await
 }
 
-#[tauri::command]
 /// Returns an array of icons from previously focused windows.
+#[tauri::command]
 pub async fn get_previous_icons(
     state: State<'_, GlazierState>,
     num: usize,

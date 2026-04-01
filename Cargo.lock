@@ -3600,7 +3600,9 @@ dependencies = [
 name = "tauri-plugin-glazier"
 version = "0.0.1"
 dependencies = [
+ "base64 0.22.1",
  "focus-tracker",
+ "image",
  "log",
  "serde",
  "serde_json",

@@ -12,5 +12,13 @@ pub async fn get_previous_icons(
     state: State<'_, GlazierState>,
     num: usize,
 ) -> Result<Vec<String>, String> {
-    todo!()
+    let items = state
+        .items
+        .lock()
+        .unwrap()
+        .iter()
+        .take(num)
+        .filter_map(|item| item.icon.clone())
+        .collect::<Vec<String>>();
+    Ok(items)
 }
