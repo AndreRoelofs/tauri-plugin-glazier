@@ -1,3 +1,6 @@
+use std::sync::Mutex;
+
+use focus_tracker::FocusedWindow;
 use tauri::{
     plugin::{Builder, TauriPlugin},
     Emitter, Error, Listener, Runtime, WebviewWindow,
@@ -17,13 +20,20 @@ mod platform;
 
 mod commands;
 
+pub struct GlazierState {
+    pub items: Mutex<Vec<FocusedWindow>>,
+}
+
 pub trait WebviewWindowExt {
     fn create_overlay_titlebar(&self) -> Result<&Self, Error>;
 }
 
 pub fn init<R: Runtime>() -> TauriPlugin<R> {
     Builder::new("glazier")
-        .setup(|_app, _api| {
+        .setup(|app, _api| {
+            app.manage(GlazierState {
+                items: Mutex::new(Vec::new()),
+            });
             log::info!("glazier plugin initialized");
             Ok(())
         })
