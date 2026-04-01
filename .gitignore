@@ -411,7 +411,6 @@ Cargo.lock
 node_modules/
 
 dist-js
-api-iife.js
 dist
 
 examples/tauri-app/pnpm-lock.yaml
